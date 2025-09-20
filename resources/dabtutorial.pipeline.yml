@@ -1,0 +1,14 @@
+# The main pipeline for dabtutorial
+resources:
+  pipelines:
+    dabtutorial_pipeline:
+      name: dabtutorial_pipeline
+      catalog: workspace
+      schema: dabtutorial_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
